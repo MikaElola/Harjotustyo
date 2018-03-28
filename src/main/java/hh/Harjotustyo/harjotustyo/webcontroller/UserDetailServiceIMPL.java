@@ -12,24 +12,18 @@ import hh.Harjotustyo.harjotustyo.domain.UserRepository;
 
 @Service
 public class UserDetailServiceIMPL implements UserDetailsService {
-private final UserRepository urepo;
-
+private final UserRepository repository;
 @Autowired
 public UserDetailServiceIMPL(UserRepository userRepository) {
-this.urepo = userRepository;
+this.repository = userRepository;
 }
-	
 @Override
 public UserDetails loadUserByUsername(String username) throws
 UsernameNotFoundException {
-User curruser = (User) urepo.findByUsername(username);
+User curruser = (User) repository.findByUsername(username);
 UserDetails user = new org.springframework.security.core.userdetails.User(username,
 curruser.getPasswordHash(),
 AuthorityUtils.createAuthorityList(curruser.getRole()));
 return user;
 }
-	
-	
-	
-
 }

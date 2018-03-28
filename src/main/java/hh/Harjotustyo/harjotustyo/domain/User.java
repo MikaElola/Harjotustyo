@@ -1,6 +1,6 @@
 package hh.Harjotustyo.harjotustyo.domain;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +26,13 @@ private String role;
 public User() {
 }
 
+public User(String username, String passwordHash, String role) {
+	super();
+	this.username = username;
+	this.passwordHash = passwordHash;
+	this.role = role;
+}
+
 public Long getId() {
 	return id;
 }
@@ -49,26 +56,6 @@ public String getRole() {
 }
 public void setRole(String role) {
 	this.role = role;
-}
-
-
-
-public User(String username, String passwordHash, String role) {
-	super();
-	this.username = username;
-	this.passwordHash = passwordHash;
-	this.role = role;
-}
-public User(Long id, String username, String passwordHash, String role) {
-	super();
-	this.id = id;
-	this.username = username;
-	this.passwordHash = passwordHash;
-	this.role = role;
-}
-@Override
-public String toString() {
-	return "User [id=" + id + ", username=" + username + ", passwordHash=" + passwordHash + ", role=" + role + "]";
 }
 
 

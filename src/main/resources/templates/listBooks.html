@@ -11,34 +11,34 @@
 </style>
 </head>
 <body class="container-fluid">
-  <h1>Musat</h1>
+<h1>Kirjat</h1>
   <ul class="nav nav-tabs nav-justified" role="tablist">
     <li><a href="listMovie">Leffat</a></li>
-    <li class="active"><a href="listMusic">Musat</a></li>
-    <li><a href="listBooks">Kirjat</a></li>     
+    <li><a href="listMusic">Musat</a></li>
+    <li class="active"><a href="listBooks">Kirjat</a></li>     
   </ul>
-
 <p th:inline="text">Logged in as [[${#httpServletRequest.remoteUser}]]!</p>
 <table class="table table-hover">
 <tr>
-	<th>Artist</th>
+	<th>Author</th>
 	<th>Name</th>
 	<th>Year</th>
 	<th>Genre</th>
 	<th></th>
 	<th></th>
-	</tr>
-<tr th:each="music : ${musics}">
-	<td th:text="${music.artist}"></td>
-	<td th:text="${music.name}"></td>
-	<td th:text="${music.year}"></td>
-	<td th:text="${music.genre}"></td>		
-	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editmusic/{id}(id=${music.musicID})}" class="btn btn-primary">Edit</a></td>
-	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deletemusic/{id}(id=${music.musicID})}" class="btn btn-danger">Delete</a></td>
+	</tr>	
+<tr th:each="book : ${books}">
+	<td th:text="${book.author}"></td>
+	<td th:text="${book.name}"></td>
+	<td th:text="${book.year}"></td>
+	<td th:text="${book.genre}"></td>
+	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editbook/{id}(id=${book.bookID})}" class="btn btn-primary">Edit</a></td>
+	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deletebook/{id}(id=${book.bookID})}" class="btn btn-danger">Delete</a></td>
 	</tr>
 </table>
-<a href="addMusic" class="btn btn-success">Add Music</a>
-<a href="index" class="btn btn-warning">Back</a> 
+
+<a class="btn btn-success" href="addBook">Add Book</a>
+<a class="btn btn-warning" href="index">Back</a>
 <form th:action="@{/logout}" method="post">
 <input class="btn" type="submit" value="Kirjaudu Ulos"/>
 </form>

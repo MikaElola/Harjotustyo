@@ -15,10 +15,10 @@ public class Music {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long musicID;
-	private String Artist;
-	private String Name;
-	private int Year;
-	private String Genre;
+	private String artist;
+	private String name;
+	private int year;
+	private String genre;
 	
 	@ManyToOne
 	@JsonIgnore
@@ -30,10 +30,10 @@ public class Music {
 	}
 	public Music(String artist, String name, int year, String genre) {
 		super();
-		Artist = artist;
-		Name = name;
-		Year = year;
-		Genre = genre;
+		this.artist = artist;
+		this.name = name;
+		this.year = year;
+		this.genre = genre;
 	}
 	public Long getMusicID() {
 		return musicID;
@@ -42,29 +42,36 @@ public class Music {
 		this.musicID = musicID;
 	}
 	public String getArtist() {
-		return Artist;
+		return artist;
 	}
 	public void setArtist(String artist) {
-		Artist = artist;
+		this.artist = artist;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	public int getYear() {
-		return Year;
+		return year;
 	}
 	public void setYear(int year) {
-		Year = year;
+		this.year = year;
 	}
 	public String getGenre() {
-		return Genre;
+		return genre;
 	}
 	public void setGenre(String genre) {
-		Genre = genre;
+		this.genre = genre;
 	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	
 	
 	
 }

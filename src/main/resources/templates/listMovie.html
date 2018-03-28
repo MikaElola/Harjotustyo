@@ -2,23 +2,42 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 <title>Insert title here</title>
+<style>
+ .btn {
+ 	margin-top: 10px;
+ }
+</style>
 </head>
-<body>
+<body class="container-fluid">
 <h1>Leffat</h1>
-<table>
+  <ul class="nav nav-tabs nav-justified" role="tablist">
+    <li class="active"><a href="listMovie">Leffat</a></li>
+    <li><a href="listMusic">Musat</a></li>
+    <li><a href="listBooks">Kirjat</a></li>     
+  </ul>
+<p th:inline="text">Logged in as [[${#httpServletRequest.remoteUser}]]!</p>
+<table class="table table-hover">
 <tr>
 	<th>Title</th>
 	<th>Year</th>
 	<th>Genre</th>
+	<th></th>
+	<th></th>
 	</tr>	
 <tr th:each="movie : ${movies}">
 	<td th:text="${movie.title}"></td>
 	<td th:text="${movie.year}"></td>
 	<td th:text="${movie.genre}"></td>
+	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editmovie/{id}(id=${movie.movieID})}" class="btn btn-primary">Edit</a></td>
+	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deletemovie/{id}(id=${movie.movieID})}" class="btn btn-danger">Delete</a></td>
 	</tr>
 </table>
-
+<a href="addMovie" class="btn btn-success">Add Movie</a>
+<a href="index" class="btn btn-warning">Back</a>
+<form th:action="@{/logout}" method="post">
+<input class="btn" type="submit" value="Kirjaudu Ulos"/>
+</form>
 </body>
 </html>

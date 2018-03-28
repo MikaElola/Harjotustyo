@@ -2,6 +2,7 @@ package hh.Harjotustyo.harjotustyo;
 
 
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -47,12 +48,14 @@ public class HarjotustyoApplication {
 		
 	log.info("pari musaa");
 	musicrepo.save(new Music("Anderson.Paak", "Malibu", 2017, "Soul,RnB"));
-	musicrepo.save(new Music("The Acasia Strain", "Coma Witch", 2016, "Deathmetal"));
+	musicrepo.save(new Music("The Acacia Strain", "Coma Witch", 2016, "Deathmetal"));
 	
 	log.info("userit");
-	urepo.save(new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER"));
-	urepo.save(new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN"));
-
+	 User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+	 User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+		urepo.save(user1);
+		urepo.save(user2);
+		
 	log.info("hae kaikki");
 	for (Music music : musicrepo.findAll()){
 		log.info(music.toString());

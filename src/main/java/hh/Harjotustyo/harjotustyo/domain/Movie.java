@@ -14,10 +14,10 @@ public class Movie {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long MovieID;
-	private String Title;
-	private int Year;
-	private String Genre;
+	private Long movieID;
+	private String title;
+	private int year;
+	private String genre;
 	
 	@ManyToOne
 	@JsonIgnore
@@ -29,34 +29,41 @@ public class Movie {
 	}
 	public Movie(String title, int year, String genre) {
 		super();
-		Title = title;
-		Year = year;
-		Genre = genre;
+		this.title = title;
+		this.year = year;
+		this.genre = genre;
 	}
 	public Long getMovieID() {
-		return MovieID;
+		return movieID;
 	}
 	public void setMovieID(Long movieID) {
-		MovieID = movieID;
+		this.movieID = movieID;
 	}
 	public String getTitle() {
-		return Title;
+		return title;
 	}
 	public void setTitle(String title) {
-		Title = title;
+		this.title = title;
 	}
 	public int getYear() {
-		return Year;
+		return year;
 	}
 	public void setYear(int year) {
-		Year = year;
+		this.year = year;
 	}
 	public String getGenre() {
-		return Genre;
+		return genre;
 	}
 	public void setGenre(String genre) {
-		Genre = genre;
+		this.genre = genre;
 	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	
 	
 	

@@ -14,11 +14,11 @@ public class Book {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long BookId;
-	private String Author;
-	private String Name;
-	private int Year;
-	private String Genre;
+	public Long bookID;
+	private String author;
+	private String name;
+	private int year;
+	private String genre;
 	
 	@ManyToOne
 	@JsonIgnore
@@ -31,41 +31,48 @@ public class Book {
 	}
 	public Book( String author,  String name, int year, String genre) {
 		super();
-		Author = author;
-		Name = name;
-		Year = year;
-		Genre = genre;
+		this.author = author;
+		this.name = name;
+		this.year = year;
+		this.genre = genre;
 	}
-	public Long getBookId() {
-		return BookId;
+	public Long getbookID() {
+		return bookID;
 	}
-	public void setBookId(Long bookId) {
-		BookId = bookId;
-	}
-	public String getName() {
-		return Name;
-	}
-	public void setName(String name) {
-		Name = name;
+	public void setbookID(Long bookID) {
+		this.bookID = bookID;
 	}
 	public String getAuthor() {
-		return Author;
+		return author;
 	}
 	public void setAuthor(String author) {
-		Author = author;
+		this.author = author;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public int getYear() {
-		return Year;
+		return year;
 	}
 	public void setYear(int year) {
-		Year = year;
+		this.year = year;
 	}
 	public String getGenre() {
-		return Genre;
+		return genre;
 	}
 	public void setGenre(String genre) {
-		Genre = genre;
+		this.genre = genre;
 	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	
 	
 }

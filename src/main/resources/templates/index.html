@@ -2,13 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 <title>Index of Harjotustyo</title>
+<style>
+.container-fluid {
+	padding: 20px;
+}
+.row {
+	padding: 10px;
+}
+.btn {
+	margin-top: 10px;
+}
+</style>
 </head>
 <body>
+<div class="container-fluid">
+
 <h1>Valitse kategoria</h1>
-<a href="listMovie">Leffat</a>
-<a href="listMusic">Musat</a>
-<a href="list">Kirjat</a>
+
+<div class="row">
+<div class="col-md-2"><a href="listMovie">Leffat</a></div>
+<div class="col-md-2"><a href="listMusic">Musat</a></div>
+<div class="col-md-2"><a href="listBooks">Kirjat</a></div>
+</div>
+<div class="row">
+<div class="col-md-4"><a href="login">Kirjaudu sisään</a></div>
+<div class="col-md-2"><a href="signup">Luo Käyttäjä</a></div>
+</div>
+
+<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+<input class="btn" type="submit" value="Kirjaudu Ulos"/>
+</form>
+
+</div>
 </body>
 </html>
